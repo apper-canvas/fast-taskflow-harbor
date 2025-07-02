@@ -68,13 +68,14 @@ class TaskService {
     return this.tasks.filter(task => task.priority === priority);
   }
 
-  async search(query) {
+async search(query) {
     await new Promise(resolve => setTimeout(resolve, 300));
     const lowercaseQuery = query.toLowerCase();
     return this.tasks.filter(task => 
-      task.title.toLowerCase().includes(lowercaseQuery)
+      task.title.toLowerCase().includes(lowercaseQuery) ||
+      (task.description && task.description.toLowerCase().includes(lowercaseQuery))
     );
-}
+  }
 
   async updatePosition(id, newPosition) {
     await new Promise(resolve => setTimeout(resolve, 200));

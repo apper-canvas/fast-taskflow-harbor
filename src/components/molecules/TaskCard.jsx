@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { format, isPast, isToday, isTomorrow } from "date-fns";
+import ReactMarkdown from "react-markdown";
 import { formatDueDate } from "@/utils/dateUtils";
 import ApperIcon from "@/components/ApperIcon";
 import Badge from "@/components/atoms/Badge";
@@ -10,7 +11,7 @@ import Checkbox from "@/components/atoms/Checkbox";
 const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(task.title);
-  
+  const [showDescription, setShowDescription] = useState(false);
   const handleEdit = () => {
     if (editTitle.trim() && editTitle !== task.title) {
       onEdit(task.Id, { title: editTitle.trim() });
@@ -101,6 +102,42 @@ const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
                 >
                   {task.title}
                 </h3>
+)}
+              
+              {task.description && !isEditing && (
+                <div className="mt-2">
+                  <button
+                    onClick={() => setShowDescription(!showDescription)}
+                    className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    <ApperIcon 
+                      name={showDescription ? "ChevronUp" : "ChevronDown"} 
+                      className="w-3 h-3" 
+                    />
+                    {showDescription ? "Hide description" : "Show description"}
+                  </button>
+                  
+                  {showDescription && (
+                    <div className="mt-2 p-3 bg-gray-50 rounded-lg border">
+                      <ReactMarkdown
+                        className="prose prose-sm max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700"
+                        components={{
+                          h1: ({children}) => <h1 className="text-lg font-bold text-gray-800 mb-2">{children}</h1>,
+                          h2: ({children}) => <h2 className="text-base font-semibold text-gray-800 mb-1">{children}</h2>,
+                          h3: ({children}) => <h3 className="text-sm font-medium text-gray-800 mb-1">{children}</h3>,
+                          p: ({children}) => <p className="text-sm text-gray-700 mb-2 last:mb-0">{children}</p>,
+                          ul: ({children}) => <ul className="text-sm text-gray-700 mb-2 pl-4 space-y-1">{children}</ul>,
+                          ol: ({children}) => <ol className="text-sm text-gray-700 mb-2 pl-4 space-y-1">{children}</ol>,
+                          li: ({children}) => <li className="text-sm">{children}</li>,
+                          strong: ({children}) => <strong className="font-semibold text-gray-800">{children}</strong>,
+                          em: ({children}) => <em className="italic text-gray-700">{children}</em>
+                        }}
+                      >
+                        {task.description}
+                      </ReactMarkdown>
+                    </div>
+                  )}
+                </div>
               )}
               
               <div className="flex items-center gap-2 mt-2">

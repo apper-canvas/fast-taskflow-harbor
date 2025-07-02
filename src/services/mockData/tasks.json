@@ -2,6 +2,7 @@
   {
     "Id": 1,
     "title": "Review quarterly marketing reports",
+    "description": "## Q4 Marketing Analysis\n\n**Key areas to review:**\n- Campaign performance metrics\n- ROI analysis for paid advertising\n- Social media engagement rates\n\n*Priority: Complete before year-end planning session*",
     "completed": false,
     "priority": "high",
     "dueDate": "2024-12-20",
@@ -9,9 +10,10 @@
     "createdAt": "2024-12-19T09:00:00.000Z",
     "completedAt": null
   },
-  {
+{
     "Id": 2,
     "title": "Update client presentation slides",
+    "description": "### Presentation Updates Needed\n\n1. Update Q4 financial projections\n2. Add new product roadmap timeline\n3. Include **competitive analysis** section\n4. Refresh brand guidelines and colors\n\n> Meeting scheduled for Friday 2 PM",
     "completed": false,
     "priority": "medium",
     "dueDate": "2024-12-21",
@@ -19,9 +21,10 @@
     "createdAt": "2024-12-19T10:30:00.000Z",
     "completedAt": null
   },
-  {
+{
     "Id": 3,
     "title": "Schedule team meeting for next week",
+    "description": "**Meeting agenda:**\n- Sprint retrospective\n- Planning for Q1 goals\n- Team building activity discussion\n\n*Sent calendar invites to all team members*",
     "completed": true,
     "priority": "low",
     "dueDate": "2024-12-19",
@@ -29,9 +32,10 @@
     "createdAt": "2024-12-18T14:00:00.000Z",
     "completedAt": "2024-12-19T11:45:00.000Z"
   },
-  {
+{
     "Id": 4,
     "title": "Buy groceries for weekend dinner",
+    "description": "### Shopping List\n\n**Main course:**\n- Salmon fillets (2 lbs)\n- Fresh asparagus\n- New potatoes\n\n**Dessert:**\n- Heavy cream\n- Fresh berries\n- Dark chocolate\n\n*Remember to check for weekend sales!*",
     "completed": false,
     "priority": "medium",
     "dueDate": "2024-12-20",
@@ -39,9 +43,10 @@
     "createdAt": "2024-12-19T08:15:00.000Z",
     "completedAt": null
   },
-  {
+{
     "Id": 5,
     "title": "Call dentist to schedule appointment",
+    "description": "## Dental Appointment\n\n**Needed services:**\n- Regular cleaning\n- Check on crown from last year\n- Discuss teeth whitening options\n\n**Available times:** Weekday mornings preferred\n\n*Dr. Smith's office: (555) 123-4567*",
     "completed": false,
     "priority": "high",
     "dueDate": null,
@@ -49,9 +54,10 @@
     "createdAt": "2024-12-19T12:00:00.000Z",
     "completedAt": null
   },
-  {
+{
     "Id": 6,
     "title": "Research new investment opportunities",
+    "description": "### Investment Research Areas\n\n1. **Tech sector ETFs**\n   - Focus on AI and renewable energy\n   - Compare expense ratios\n\n2. **International diversification**\n   - Emerging markets exposure\n   - Currency hedged options\n\n3. **Real estate investment trusts**\n   - Dividend yield analysis\n   - Market cap considerations",
     "completed": false,
     "priority": "low",
     "dueDate": "2024-12-25",
@@ -59,9 +65,10 @@
     "createdAt": "2024-12-19T16:30:00.000Z",
     "completedAt": null
   },
-  {
+{
     "Id": 7,
     "title": "Review budget for December",
+    "description": "## December Budget Review ✅\n\n**Completed analysis:**\n- Holiday spending allocation\n- Year-end bonus planning\n- Tax optimization strategies\n\n**Key findings:**\n- Under budget by **$200** this month\n- Emergency fund fully topped up\n- Ready for Q1 planning session",
     "completed": true,
     "priority": "high",
     "dueDate": "2024-12-18",
@@ -69,9 +76,10 @@
     "createdAt": "2024-12-17T13:20:00.000Z",
     "completedAt": "2024-12-18T15:30:00.000Z"
   },
-  {
+{
     "Id": 8,
     "title": "Plan weekend hiking trip",
+    "description": "### Hiking Trip Planning\n\n**Trail options:**\n- Blue Ridge Mountain Trail (moderate, 8 miles)\n- Riverside Loop (easy, 5 miles)\n- Summit Challenge (difficult, 12 miles)\n\n**To pack:**\n- Water bottles and snacks\n- First aid kit\n- Weather-appropriate clothing\n\n*Check weather forecast before deciding on trail*",
     "completed": false,
     "priority": "low",
     "dueDate": "2024-12-22",
@@ -79,9 +87,10 @@
     "createdAt": "2024-12-19T17:45:00.000Z",
     "completedAt": null
   },
-  {
+{
     "Id": 9,
     "title": "Finish product feature documentation",
+    "description": "## Feature Documentation Status\n\n### Completed sections:\n- ✅ User authentication flow\n- ✅ API endpoints documentation\n- ✅ Database schema changes\n\n### Remaining work:\n- [ ] **Error handling scenarios**\n- [ ] **Performance benchmarks**\n- [ ] **Deployment procedures**\n\n*Target: Complete before code review meeting*",
     "completed": false,
     "priority": "high",
     "dueDate": "2024-12-20",
@@ -89,9 +98,10 @@
     "createdAt": "2024-12-18T11:00:00.000Z",
     "completedAt": null
   },
-  {
+{
     "Id": 10,
     "title": "Set up automatic savings transfer",
+    "description": "### Automatic Savings Setup\n\n**Transfer details:**\n- Amount: $500 monthly\n- Source: Checking account\n- Destination: High-yield savings\n- Schedule: 1st of each month\n\n**Next steps:**\n1. Log into online banking\n2. Navigate to transfers section\n3. Set up recurring transfer\n4. Confirm first transfer date\n\n*Goal: Build emergency fund to 6 months expenses*",
     "completed": false,
     "priority": "medium",
     "dueDate": null,
