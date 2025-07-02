@@ -359,8 +359,8 @@ return (
               onAddTask={handleAddTask}
               selectedCategory={
                 selectedCategory === 'all' || ['today', 'upcoming', 'completed'].includes(selectedCategory)
-                  ? categories[0]?.Id || null
-                  : selectedCategory
+                  ? null
+                  : parseInt(selectedCategory)
               }
               categories={categories}
             />

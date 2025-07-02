@@ -15,7 +15,7 @@ const handleSubmit = (e) => {
     if (!taskTitle.trim()) return;
     
     // Ensure we have a valid category ID (integer) or null
-    const validCategoryId = selectedCategory && typeof selectedCategory === 'number' ? selectedCategory : null;
+    const validCategoryId = selectedCategory && Number.isInteger(selectedCategory) ? selectedCategory : null;
     
     onAddTask({
       title: taskTitle.trim(),
