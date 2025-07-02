@@ -353,11 +353,15 @@ return (
       />
       
       <div className="flex-1 flex flex-col min-w-0">
-        <div className="flex-1 p-6 overflow-auto">
+<div className="flex-1 p-6 overflow-auto">
           <div className="max-w-4xl mx-auto">
             <QuickAddBar
               onAddTask={handleAddTask}
-              selectedCategory={selectedCategory === 'all' ? categories[0]?.Id : selectedCategory}
+              selectedCategory={
+                selectedCategory === 'all' || ['today', 'upcoming', 'completed'].includes(selectedCategory)
+                  ? categories[0]?.Id || null
+                  : selectedCategory
+              }
               categories={categories}
             />
             

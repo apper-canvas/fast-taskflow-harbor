@@ -10,15 +10,18 @@ const QuickAddBar = ({ onAddTask, selectedCategory, categories }) => {
   const [priority, setPriority] = useState('medium');
   const [dueDate, setDueDate] = useState('');
   
-  const handleSubmit = (e) => {
+const handleSubmit = (e) => {
     e.preventDefault();
     if (!taskTitle.trim()) return;
+    
+    // Ensure we have a valid category ID (integer) or null
+    const validCategoryId = selectedCategory && typeof selectedCategory === 'number' ? selectedCategory : null;
     
     onAddTask({
       title: taskTitle.trim(),
       priority,
       dueDate: dueDate || null,
-      categoryId: selectedCategory
+      categoryId: validCategoryId
     });
     
     setTaskTitle('');
