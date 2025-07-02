@@ -342,8 +342,9 @@ const handleClearFilters = () => {
     }
 };
 
-  return (
+return (
     <div className="h-screen flex bg-gray-50">
+      <CategorySidebar
         categories={categories}
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
