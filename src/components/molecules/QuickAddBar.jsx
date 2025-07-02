@@ -14,8 +14,20 @@ const handleSubmit = (e) => {
     e.preventDefault();
     if (!taskTitle.trim()) return;
     
-    // Ensure we have a valid category ID (integer) or null
-    const validCategoryId = selectedCategory && Number.isInteger(selectedCategory) ? selectedCategory : null;
+    // Parse selectedCategory to integer if it's a valid category ID
+    let validCategoryId = null;
+    if (selectedCategory !== null && selectedCategory !== undefined) {
+      // If it's already an integer, use it directly
+      if (Number.isInteger(selectedCategory)) {
+        validCategoryId = selectedCategory;
+      } else {
+        // If it's a string that represents a number, parse it
+        const parsed = parseInt(selectedCategory, 10);
+        if (!isNaN(parsed) && parsed > 0) {
+          validCategoryId = parsed;
+        }
+      }
+    }
     
     onAddTask({
       title: taskTitle.trim(),

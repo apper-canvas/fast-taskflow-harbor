@@ -360,7 +360,7 @@ return (
               selectedCategory={
                 selectedCategory === 'all' || ['today', 'upcoming', 'completed'].includes(selectedCategory)
                   ? null
-                  : parseInt(selectedCategory)
+                  : selectedCategory
               }
               categories={categories}
             />
