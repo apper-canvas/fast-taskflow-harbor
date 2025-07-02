@@ -77,6 +77,59 @@ async search(query) {
     );
   }
 
+  async bulkComplete(taskIds) {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    const completedCount = taskIds.length;
+    const now = new Date().toISOString();
+    
+    taskIds.forEach(id => {
+      const index = this.tasks.findIndex(task => task.Id === parseInt(id));
+      if (index !== -1) {
+        this.tasks[index] = {
+          ...this.tasks[index],
+          completed: true,
+          completedAt: now
+        };
+      }
+    });
+    
+    return completedCount;
+  }
+
+  async bulkDelete(taskIds) {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    const deletedCount = taskIds.length;
+    
+    taskIds.forEach(id => {
+      const index = this.tasks.findIndex(task => task.Id === parseInt(id));
+      if (index !== -1) {
+        this.tasks.splice(index, 1);
+      }
+    });
+    
+    return deletedCount;
+  }
+
+  async bulkUpdateCategory(taskIds, categoryId) {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    const updatedCount = taskIds.length;
+    
+    taskIds.forEach(id => {
+      const index = this.tasks.findIndex(task => task.Id === parseInt(id));
+      if (index !== -1) {
+        this.tasks[index] = {
+          ...this.tasks[index],
+          categoryId: categoryId
+        };
+      }
+    });
+    
+    return updatedCount;
+  }
+
   async updatePosition(id, newPosition) {
     await new Promise(resolve => setTimeout(resolve, 200));
     

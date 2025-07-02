@@ -14,7 +14,7 @@ const TaskManager = () => {
   const { categoryId, filter } = useParams();
   const navigate = useNavigate();
   
-  // State management
+// State management
   const [tasks, setTasks] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +25,9 @@ const TaskManager = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [priorityFilter, setPriorityFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('all');
+  
+  // Selection state
+  const [selectedTasks, setSelectedTasks] = useState([]);
   
   // Load data on mount
   useEffect(() => {
@@ -262,16 +265,85 @@ const TaskManager = () => {
       console.error('Error adding category:', err);
     }
   };
-  
-  const handleClearFilters = () => {
+const handleClearFilters = () => {
     setSearchTerm('');
     setPriorityFilter('all');
     setDateFilter('all');
   };
-  
+
+  // Selection handlers
+  const handleSelectTask = (taskId) => {
+    setSelectedTasks(prev => 
+      prev.includes(taskId) 
+        ? prev.filter(id => id !== taskId)
+        : [...prev, taskId]
+    );
+  };
+
+  const handleSelectAll = () => {
+    if (selectedTasks.length === filteredTasks.length) {
+      setSelectedTasks([]);
+    } else {
+      setSelectedTasks(filteredTasks.map(task => task.Id));
+    }
+  };
+
+  const handleClearSelection = () => {
+    setSelectedTasks([]);
+  };
+
+  // Bulk operations
+  const handleBulkComplete = async () => {
+    if (selectedTasks.length === 0) return;
+    
+    try {
+      await taskService.bulkComplete(selectedTasks);
+      const updatedTasks = await taskService.getAll();
+      setTasks(updatedTasks);
+      setSelectedTasks([]);
+      toast.success(`${selectedTasks.length} tasks marked as completed!`);
+    } catch (err) {
+      toast.error('Failed to update tasks. Please try again.');
+      console.error('Error in bulk complete:', err);
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    if (selectedTasks.length === 0) return;
+    
+    if (!confirm(`Are you sure you want to delete ${selectedTasks.length} tasks?`)) return;
+    
+    try {
+      await taskService.bulkDelete(selectedTasks);
+      const updatedTasks = await taskService.getAll();
+      setTasks(updatedTasks);
+      setSelectedTasks([]);
+      toast.success(`${selectedTasks.length} tasks deleted successfully!`);
+    } catch (err) {
+      toast.error('Failed to delete tasks. Please try again.');
+      console.error('Error in bulk delete:', err);
+    }
+  };
+
+  const handleBulkMove = async (categoryId) => {
+    if (selectedTasks.length === 0) return;
+    
+    try {
+      await taskService.bulkUpdateCategory(selectedTasks, categoryId);
+      const updatedTasks = await taskService.getAll();
+      setTasks(updatedTasks);
+      setSelectedTasks([]);
+      
+      const categoryName = categories.find(cat => cat.Id === categoryId)?.name || 'Unknown';
+      toast.success(`${selectedTasks.length} tasks moved to ${categoryName}!`);
+    } catch (err) {
+      toast.error('Failed to move tasks. Please try again.');
+      console.error('Error in bulk move:', err);
+    }
+};
+
   return (
     <div className="h-screen flex bg-gray-50">
-      <CategorySidebar
         categories={categories}
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
@@ -312,6 +384,14 @@ const TaskManager = () => {
               onEditTask={handleEditTask}
               onDeleteTask={handleDeleteTask}
               onRetry={loadData}
+              selectedTasks={selectedTasks}
+              onSelectTask={handleSelectTask}
+              onSelectAll={handleSelectAll}
+              onClearSelection={handleClearSelection}
+              onBulkComplete={handleBulkComplete}
+              onBulkDelete={handleBulkDelete}
+              onBulkMove={handleBulkMove}
+              categories={categories}
             />
           </div>
         </div>

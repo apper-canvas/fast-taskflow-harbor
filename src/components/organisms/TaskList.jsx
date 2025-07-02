@@ -2,10 +2,10 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import TaskCard from "@/components/molecules/TaskCard";
+import BulkActionToolbar from "@/components/molecules/BulkActionToolbar";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
 import Loading from "@/components/ui/Loading";
-
 const TaskList = ({ 
   tasks, 
   loading, 
@@ -13,7 +13,15 @@ const TaskList = ({
   onToggleComplete, 
   onEditTask, 
   onDeleteTask,
-  onRetry 
+  onRetry,
+  selectedTasks = [],
+  onSelectTask,
+  onSelectAll,
+  onClearSelection,
+  onBulkComplete,
+  onBulkDelete,
+  onBulkMove,
+  categories = []
 }) => {
   if (loading) {
     return <Loading />;
@@ -29,6 +37,21 @@ const TaskList = ({
   
 return (
     <div className="space-y-4">
+      <AnimatePresence>
+        {selectedTasks.length > 0 && (
+          <BulkActionToolbar
+            selectedCount={selectedTasks.length}
+            totalCount={tasks.length}
+            onSelectAll={onSelectAll}
+            onClearSelection={onClearSelection}
+            onBulkComplete={onBulkComplete}
+            onBulkDelete={onBulkDelete}
+            onBulkMove={onBulkMove}
+            categories={categories}
+          />
+        )}
+      </AnimatePresence>
+      
       <SortableContext items={tasks.map(task => task.Id)} strategy={verticalListSortingStrategy}>
         <AnimatePresence mode="popLayout">
           {tasks.map((task) => (
@@ -38,6 +61,8 @@ return (
               onToggleComplete={onToggleComplete}
               onEdit={onEditTask}
               onDelete={onDeleteTask}
+              isSelected={selectedTasks.includes(task.Id)}
+              onSelect={onSelectTask}
             />
           ))}
         </AnimatePresence>
