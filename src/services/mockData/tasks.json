@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "title": "Review quarterly marketing reports",
+    "completed": false,
+    "priority": "high",
+    "dueDate": "2024-12-20",
+    "categoryId": 1,
+    "createdAt": "2024-12-19T09:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 2,
+    "title": "Update client presentation slides",
+    "completed": false,
+    "priority": "medium",
+    "dueDate": "2024-12-21",
+    "categoryId": 1,
+    "createdAt": "2024-12-19T10:30:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 3,
+    "title": "Schedule team meeting for next week",
+    "completed": true,
+    "priority": "low",
+    "dueDate": "2024-12-19",
+    "categoryId": 1,
+    "createdAt": "2024-12-18T14:00:00.000Z",
+    "completedAt": "2024-12-19T11:45:00.000Z"
+  },
+  {
+    "Id": 4,
+    "title": "Buy groceries for weekend dinner",
+    "completed": false,
+    "priority": "medium",
+    "dueDate": "2024-12-20",
+    "categoryId": 2,
+    "createdAt": "2024-12-19T08:15:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 5,
+    "title": "Call dentist to schedule appointment",
+    "completed": false,
+    "priority": "high",
+    "dueDate": null,
+    "categoryId": 2,
+    "createdAt": "2024-12-19T12:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 6,
+    "title": "Research new investment opportunities",
+    "completed": false,
+    "priority": "low",
+    "dueDate": "2024-12-25",
+    "categoryId": 3,
+    "createdAt": "2024-12-19T16:30:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 7,
+    "title": "Review budget for December",
+    "completed": true,
+    "priority": "high",
+    "dueDate": "2024-12-18",
+    "categoryId": 3,
+    "createdAt": "2024-12-17T13:20:00.000Z",
+    "completedAt": "2024-12-18T15:30:00.000Z"
+  },
+  {
+    "Id": 8,
+    "title": "Plan weekend hiking trip",
+    "completed": false,
+    "priority": "low",
+    "dueDate": "2024-12-22",
+    "categoryId": 2,
+    "createdAt": "2024-12-19T17:45:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 9,
+    "title": "Finish product feature documentation",
+    "completed": false,
+    "priority": "high",
+    "dueDate": "2024-12-20",
+    "categoryId": 1,
+    "createdAt": "2024-12-18T11:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "Id": 10,
+    "title": "Set up automatic savings transfer",
+    "completed": false,
+    "priority": "medium",
+    "dueDate": null,
+    "categoryId": 3,
+    "createdAt": "2024-12-19T19:15:00.000Z",
+    "completedAt": null
+  }
+]

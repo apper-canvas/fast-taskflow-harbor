@@ -1,0 +1,103 @@
+@import 'react-toastify/dist/ReactToastify.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --toastify-toast-width: 320px;
+  --toastify-toast-min-height: 64px;
+}
+
+.Toastify__toast {
+  @apply rounded-xl shadow-lg;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 12px 16px;
+  min-height: 64px;
+}
+
+.Toastify__toast--success {
+  @apply bg-white border-l-4 border-emerald-500;
+  color: #111827;
+}
+
+.Toastify__toast--error {
+  @apply bg-white border-l-4 border-red-500;
+  color: #111827;
+}
+
+.Toastify__toast--info {
+  @apply bg-white border-l-4 border-blue-500;
+  color: #111827;
+}
+
+.Toastify__toast--warning {
+  @apply bg-white border-l-4 border-yellow-500;
+  color: #111827;
+}
+
+.Toastify__progress-bar {
+  @apply bg-gradient-to-r from-primary-500 to-violet-500;
+}
+
+.Toastify__close-button {
+  @apply text-gray-400 hover:text-gray-600;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-text-primary;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .task-checkbox {
+    @apply relative inline-block w-5 h-5 rounded border-2 border-gray-300 bg-white cursor-pointer transition-all duration-200;
+  }
+  
+  .task-checkbox:hover {
+    @apply border-primary-500 shadow-sm;
+  }
+  
+  .task-checkbox.checked {
+    @apply bg-emerald-500 border-emerald-500;
+  }
+  
+  .task-checkbox.checked::after {
+    content: '';
+    @apply absolute top-0.5 left-1.5 w-2 h-3 border-white border-r-2 border-b-2 transform rotate-45;
+  }
+  
+  .priority-dot {
+    @apply w-2 h-2 rounded-full inline-block mr-2 transition-all duration-200;
+  }
+  
+  .priority-dot.high {
+    @apply bg-red-500 shadow-red-500/50 shadow-sm;
+  }
+  
+  .priority-dot.medium {
+    @apply bg-yellow-500 shadow-yellow-500/50 shadow-sm;
+  }
+  
+  .priority-dot.low {
+    @apply bg-blue-500 shadow-blue-500/50 shadow-sm;
+  }
+  
+  .category-pill {
+    @apply px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer;
+  }
+  
+  .category-pill:hover {
+    @apply transform scale-105 shadow-md;
+  }
+  
+  .category-pill.active {
+    @apply bg-gradient-to-r from-primary-500 to-violet-500 text-white shadow-lg;
+  }
+  
+  .category-pill.inactive {
+    @apply bg-surface text-text-secondary hover:bg-gray-200;
+  }
+}
