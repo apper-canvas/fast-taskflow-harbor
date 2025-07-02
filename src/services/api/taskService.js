@@ -74,6 +74,35 @@ class TaskService {
     return this.tasks.filter(task => 
       task.title.toLowerCase().includes(lowercaseQuery)
     );
+}
+
+  async updatePosition(id, newPosition) {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    
+    const taskIndex = this.tasks.findIndex(task => task.Id === parseInt(id));
+    if (taskIndex === -1) {
+      throw new Error('Task not found');
+    }
+
+    // Remove the task from its current position
+    const [movedTask] = this.tasks.splice(taskIndex, 1);
+    
+    // Insert it at the new position
+    this.tasks.splice(newPosition, 0, movedTask);
+    
+    return { ...movedTask };
+  }
+
+  async updateCategory(id, categoryId) {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    
+    const index = this.tasks.findIndex(task => task.Id === parseInt(id));
+    if (index === -1) {
+      throw new Error('Task not found');
+    }
+
+    this.tasks[index] = { ...this.tasks[index], categoryId };
+    return { ...this.tasks[index] };
   }
 }
 

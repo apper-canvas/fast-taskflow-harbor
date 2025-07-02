@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { format, isToday, isTomorrow, isPast } from 'date-fns';
-import Checkbox from '@/components/atoms/Checkbox';
-import Badge from '@/components/atoms/Badge';
-import Button from '@/components/atoms/Button';
-import ApperIcon from '@/components/ApperIcon';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { format, isPast, isToday, isTomorrow } from "date-fns";
+import { formatDueDate } from "@/utils/dateUtils";
+import ApperIcon from "@/components/ApperIcon";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
+import Checkbox from "@/components/atoms/Checkbox";
 
 const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -67,15 +68,18 @@ const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
         ${task.completed ? 'opacity-60' : ''}
       `}
     >
-      <div className="flex items-start gap-3">
+<div className="flex items-start gap-3">
         <div className="flex-shrink-0 pt-0.5">
           <Checkbox
             checked={task.completed}
             onChange={() => onToggleComplete(task.Id)}
             animated
           />
-        </div>
+</div>
         
+        <div className="flex-shrink-0 pt-0.5">
+          <ApperIcon name="GripVertical" className="w-4 h-4 text-gray-400" />
+        </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <div className="flex-1">

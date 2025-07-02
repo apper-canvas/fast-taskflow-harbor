@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { isToday, isTomorrow, isThisWeek, isPast, startOfDay } from 'date-fns';
-import CategorySidebar from '@/components/organisms/CategorySidebar';
-import QuickAddBar from '@/components/molecules/QuickAddBar';
-import FilterBar from '@/components/molecules/FilterBar';
-import TaskStats from '@/components/molecules/TaskStats';
-import TaskList from '@/components/organisms/TaskList';
-import taskService from '@/services/api/taskService';
-import categoryService from '@/services/api/categoryService';
+import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { isPast, isThisWeek, isToday, isTomorrow, startOfDay } from "date-fns";
+import CategorySidebar from "@/components/organisms/CategorySidebar";
+import TaskList from "@/components/organisms/TaskList";
+import QuickAddBar from "@/components/molecules/QuickAddBar";
+import TaskStats from "@/components/molecules/TaskStats";
+import FilterBar from "@/components/molecules/FilterBar";
+import taskService from "@/services/api/taskService";
+import categoryService from "@/services/api/categoryService";
 
 const TaskManager = () => {
   const { categoryId, filter } = useParams();
@@ -304,8 +304,7 @@ const TaskManager = () => {
               onDateFilterChange={setDateFilter}
               onClearFilters={handleClearFilters}
             />
-            
-            <TaskList
+<TaskList
               tasks={filteredTasks}
               loading={loading}
               error={error}

@@ -1,9 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import CategoryPill from '@/components/molecules/CategoryPill';
-import Button from '@/components/atoms/Button';
-import ApperIcon from '@/components/ApperIcon';
-
+import React from "react";
+import { motion } from "framer-motion";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import CategoryPill from "@/components/molecules/CategoryPill";
+import CategoryDropZone from "@/components/molecules/CategoryDropZone";
 const CategorySidebar = ({ 
   categories, 
   selectedCategory, 
@@ -87,15 +87,16 @@ const CategorySidebar = ({
                 className="p-1.5"
               />
             </div>
-            <div className="space-y-2">
+<div className="space-y-2">
               {categories.map((category) => (
-                <CategoryPill
-                  key={category.Id}
-                  category={category}
-                  isActive={selectedCategory === category.Id}
-                  taskCount={taskCounts[category.Id] || 0}
-                  onClick={() => onSelectCategory(category.Id)}
-                />
+                <CategoryDropZone key={category.Id} category={category}>
+                  <CategoryPill
+                    category={category}
+                    isActive={selectedCategory === category.Id}
+                    taskCount={taskCounts[category.Id] || 0}
+                    onClick={() => onSelectCategory(category.Id)}
+                  />
+                </CategoryDropZone>
               ))}
             </div>
           </div>
